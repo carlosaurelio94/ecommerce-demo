@@ -28,6 +28,121 @@
       min-height: 100vh;
     }
 
+    /* ── NAV LINKS ── */
+    .nav-links {
+      display: flex; gap: 4px;
+    }
+    .nav-link {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all .2s;
+    }
+    .nav-link:hover { color: white; background: rgba(255,255,255,0.08); }
+    @media (max-width: 520px) { .nav-links { display: none; } }
+
+    /* ── SOBRE NOSOTROS ── */
+    .sobre {
+      background: white;
+      padding: 64px 20px;
+    }
+    .sobre-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+    }
+    @media (max-width: 640px) { .sobre-inner { grid-template-columns: 1fr; gap: 32px; } }
+    .sobre-img-wrap {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+      aspect-ratio: 4/3; background: var(--gris-claro);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+    }
+    .sobre-tag {
+      display: inline-block;
+      background: rgba(224,92,0,0.1); color: var(--acento);
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .sobre-titulo {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 16px;
+    }
+    .sobre-texto {
+      color: var(--gris-medio); font-size: .95rem; line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .sobre-stats {
+      display: flex; gap: 28px; margin-top: 24px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--acento); line-height: 1; }
+    .stat-lbl { font-size: .75rem; color: var(--gris-medio); margin-top: 4px; }
+
+    /* ── BENEFICIOS ── */
+    .beneficios {
+      background: var(--gris-claro);
+      padding: 56px 20px;
+    }
+    .beneficios-inner { max-width: 900px; margin: 0 auto; }
+    .sec-titulo {
+      text-align: center; font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 800; margin-bottom: 8px;
+    }
+    .sec-sub {
+      text-align: center; color: var(--gris-medio);
+      font-size: .9rem; margin-bottom: 40px;
+    }
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .bene-card {
+      background: white; border-radius: var(--radio);
+      padding: 24px 20px; box-shadow: var(--sombra);
+      text-align: center;
+      transition: transform .2s;
+    }
+    .bene-card:hover { transform: translateY(-3px); }
+    .bene-icon { font-size: 2rem; margin-bottom: 12px; }
+    .bene-titulo { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+    .bene-desc { font-size: .82rem; color: var(--gris-medio); line-height: 1.5; }
+
+    /* ── CONTACTO ── */
+    .contacto-sec {
+      background: var(--negro);
+      color: white;
+      padding: 56px 20px;
+      text-align: center;
+    }
+    .contacto-sec h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800; margin-bottom: 10px;
+    }
+    .contacto-sec p { color: rgba(255,255,255,0.55); margin-bottom: 32px; font-size: .95rem; }
+    .contacto-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25d366; color: white;
+      text-decoration: none; font-weight: 700; font-size: .95rem;
+      padding: 13px 24px; border-radius: 12px;
+      transition: all .2s;
+    }
+    .btn-wa:hover { background: #1fb855; transform: translateY(-2px); }
+    .btn-mail {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); color: white;
+      text-decoration: none; font-weight: 700; font-size: .95rem;
+      padding: 13px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15);
+      transition: all .2s;
+    }
+    .btn-mail:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+
     /* ── HEADER ── */
     header {
       background: var(--negro);
@@ -426,6 +541,12 @@
 <header>
   <div class="header-inner">
     <div class="logo">Step<span>Up</span></div>
+    <nav class="nav-links">
+      <a class="nav-link" href="#inicio">Inicio</a>
+      <a class="nav-link" href="#nosotros">Nosotros</a>
+      <a class="nav-link" href="#tienda">Tienda</a>
+      <a class="nav-link" href="#contacto">Contacto</a>
+    </nav>
     <div class="header-actions">
       <button class="cart-btn" onclick="abrirCarrito()">
         🛒 Carrito <span id="cart-count">0</span>
@@ -435,13 +556,81 @@
 </header>
 
 <!-- Hero -->
-<div class="hero">
+<div class="hero" id="inicio">
   <h1>Calzado para <em>cada paso</em><br>de tu vida</h1>
   <p>Envíos a todo el país · Cuotas sin interés</p>
-  <button class="hero-cta" onclick="document.querySelector('.grid').scrollIntoView({behavior:'smooth'})">
+  <button class="hero-cta" onclick="document.getElementById('tienda').scrollIntoView({behavior:'smooth'})">
     Ver productos ↓
   </button>
 </div>
+
+<!-- Sobre Nosotros -->
+<section class="sobre" id="nosotros">
+  <div class="sobre-inner">
+    <div class="sobre-img-wrap">👟</div>
+    <div>
+      <div class="sobre-tag">Nuestra historia</div>
+      <h2 class="sobre-titulo">Más de 10 años<br>vistiendo tus pies</h2>
+      <p class="sobre-texto">
+        StepUp nació en Buenos Aires con una idea simple: que cada persona encuentre
+        el calzado perfecto sin complicaciones. Empezamos con un local en el barrio
+        y hoy llegamos a todo el país con nuestra tienda online.
+      </p>
+      <p class="sobre-texto">
+        Trabajamos con marcas nacionales e internacionales, seleccionando cada modelo
+        por su comodidad, durabilidad y diseño. Nuestro equipo conoce el calzado
+        como nadie — y eso se nota en la atención.
+      </p>
+      <div class="sobre-stats">
+        <div class="stat">
+          <div class="stat-num">+5K</div>
+          <div class="stat-lbl">Clientes satisfechos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">+200</div>
+          <div class="stat-lbl">Modelos disponibles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10</div>
+          <div class="stat-lbl">Años en el mercado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Beneficios -->
+<section class="beneficios">
+  <div class="beneficios-inner">
+    <div class="sec-titulo">¿Por qué elegirnos?</div>
+    <div class="sec-sub">Todo lo que necesitás, sin salir de casa</div>
+    <div class="beneficios-grid">
+      <div class="bene-card">
+        <div class="bene-icon">🚚</div>
+        <div class="bene-titulo">Envío a todo el país</div>
+        <div class="bene-desc">Despachamos en 24–48 hs. Gratis en compras mayores a USD 80.</div>
+      </div>
+      <div class="bene-card">
+        <div class="bene-icon">💳</div>
+        <div class="bene-titulo">Cuotas sin interés</div>
+        <div class="bene-desc">Hasta 12 cuotas sin interés con tarjetas seleccionadas vía MercadoPago.</div>
+      </div>
+      <div class="bene-card">
+        <div class="bene-icon">🔄</div>
+        <div class="bene-titulo">Cambio de talle</div>
+        <div class="bene-desc">Si el talle no te queda, lo cambiamos sin costo en los primeros 15 días.</div>
+      </div>
+      <div class="bene-card">
+        <div class="bene-icon">✅</div>
+        <div class="bene-titulo">Calidad garantizada</div>
+        <div class="bene-desc">Solo vendemos productos seleccionados. Si algo falla, te respondemos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Anchor tienda -->
+<div id="tienda"></div>
 
 <!-- Categorías -->
 <div class="categorias">
@@ -491,6 +680,20 @@
 
 <!-- Toast -->
 <div class="toast" id="toast"></div>
+
+<!-- Contacto -->
+<section class="contacto-sec" id="contacto">
+  <h2>¿Tenés alguna consulta?</h2>
+  <p>Estamos disponibles de lunes a sábado de 9 a 20 hs.<br>Respondemos en menos de 1 hora.</p>
+  <div class="contacto-btns">
+    <a class="btn-wa" href="https://wa.me/5491100000000" target="_blank">
+      💬 Escribinos por WhatsApp
+    </a>
+    <a class="btn-mail" href="mailto:stepup@ejemplo.com">
+      ✉️ stepup@ejemplo.com
+    </a>
+  </div>
+</section>
 
 <!-- Footer -->
 <footer>
